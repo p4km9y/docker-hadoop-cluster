@@ -9,6 +9,9 @@ rm /tmp/*.pid
 # installing libraries if any - (resource urls added comma separated to the ACP system variable)
 cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; curl -LO $cp ; done; cd -
 
+mkdir -p /var/lib/hadoop/config
+cp -r $HADOOP_PREFIX/etc/hadoop/* /var/lib/hadoop/config
+
 # altering the core-site configuration
 #sed s/NAMENODE/$HOSTNAME/ /usr/local/hadoop/etc/hadoop/core-site.xml.template > /usr/local/hadoop/etc/hadoop/core-site.xml
 #sed s/NAMENODE/$HOSTNAME/ /usr/local/hadoop/etc/hadoop/hdfs-site.xml.template > /usr/local/hadoop/etc/hadoop/hdfs-site.xml
